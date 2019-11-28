@@ -1,0 +1,13 @@
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Repository.deps.json
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Repository.dll
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Repository.pdb
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Contracts.dll
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Entities.dll
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Contracts.pdb
+D:\programeren\grote_proftaat\API\Repository\bin\Debug\netcoreapp3.0\Entities.pdb
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.csprojAssemblyReference.cache
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.AssemblyInfoInputs.cache
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.AssemblyInfo.cs
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.csproj.CopyComplete
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.dll
+D:\programeren\grote_proftaat\API\Repository\obj\Debug\netcoreapp3.0\Repository.pdb

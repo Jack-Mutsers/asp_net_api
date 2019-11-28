@@ -1,17 +1,20 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Extensions;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.EntityFrameworkCore;
-using API.Models;
+using NLog;
 
 namespace API
 {
@@ -19,6 +22,7 @@ namespace API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config")); // new
             Configuration = configuration;
         }
 
@@ -27,11 +31,12 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<CategorieContext>(opt => opt.UseInMemoryDatabase("CategorieList"));
-            services.AddDbContext<ComponentContext>(opt => opt.UseInMemoryDatabase("ComponentList"));
-            services.AddDbContext<LogContext>(opt => opt.UseInMemoryDatabase("LogList"));
-            services.AddDbContext<LoginContext>(opt => opt.UseInMemoryDatabase("LoginList"));
-            services.AddDbContext<ValidationContext>(opt => opt.UseInMemoryDatabase("ValidationList"));
+            services.ConfigureCors(); // new
+            services.ConfigureIISIntegration(); // new
+            services.ConfigureLoggerService(); // new
+            services.ConfigureMySqlContext(Configuration); // new
+            services.ConfigureRepositoryWrapper(); // new
+            services.AddAutoMapper(typeof(Startup)); // new
             services.AddControllers();
         }
 
@@ -44,6 +49,14 @@ namespace API
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles(); // new
+
+            app.UseCors("CorsPolicy"); // new
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions // new
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
 
             app.UseRouting();
 
