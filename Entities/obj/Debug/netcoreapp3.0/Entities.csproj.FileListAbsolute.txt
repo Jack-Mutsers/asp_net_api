@@ -5,3 +5,4 @@ D:\programeren\grote_proftaat\API\Entities\obj\Debug\netcoreapp3.0\Entities.Asse
 D:\programeren\grote_proftaat\API\Entities\obj\Debug\netcoreapp3.0\Entities.AssemblyInfo.cs
 D:\programeren\grote_proftaat\API\Entities\obj\Debug\netcoreapp3.0\Entities.dll
 D:\programeren\grote_proftaat\API\Entities\obj\Debug\netcoreapp3.0\Entities.pdb
+D:\programeren\grote_proftaat\API\Entities\obj\Debug\netcoreapp3.0\Entities.csprojAssemblyReference.cache

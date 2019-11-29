@@ -5,9 +5,8 @@ using System.Text;
 
 namespace Entities.DataTransferObjects
 {
-    public class ValidationForCreationDto
+    public class CategorieForCreationDto
     {
-        public Guid access_token { get; set; }
-        public Guid user_id { get; set; }
+        public string cat_name { get; set; }
     }
 }

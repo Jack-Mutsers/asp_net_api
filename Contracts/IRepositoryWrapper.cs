@@ -10,6 +10,8 @@ namespace Contracts
         IAccountRepository Account { get; }
         IUserRepository User { get; }
         IValidationRepository Validation { get; }
+        IComponentRepository Component { get; }
+        ICategorieRepository Categorie { get; }
         void Save();
     }
 }

@@ -15,7 +15,8 @@ namespace Repository
         
         public Validation CheckAccessToken(Guid token)
         {
-            return FindByCondition(val => val.access_token.Equals(token))
+            DateTime dt = DateTime.Now;
+            return FindByCondition(val => val.access_token.Equals(token) && val.expiration_date > dt)
                     .FirstOrDefault();
         }
 

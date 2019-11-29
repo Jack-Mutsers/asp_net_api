@@ -21,6 +21,12 @@ namespace API
             CreateMap<Validation, ValidationDto>();
             CreateMap<ValidationForCreationDto, Validation>();
 
+            CreateMap<Component, ComponentDto>();
+            CreateMap<ComponentForCreationDto, Component>();
+
+            CreateMap<Categorie, CategorieDto>();
+            CreateMap<CategorieForCreationDto, Categorie>();
+
             CreateMap<Account, AccountDto>();
 
 

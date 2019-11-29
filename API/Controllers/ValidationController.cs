@@ -52,5 +52,33 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPost]
+        public IActionResult GetValidationByToken([FromBody]ValidationForCreationDto valDto)
+        {
+            try
+            {
+                Guid token = valDto.access_token;
+                var val = _repository.Validation.CheckAccessToken(token);
+
+                if (val == null)
+                {
+                    _logger.LogError($"No valid token with access key: {token} has been found in the db.");
+                    return NotFound();
+                }
+                else
+                {
+                    _logger.LogInfo($"Returned validation with access key: {token}");
+
+                    var validationResult = _mapper.Map<ValidationDto>(val);
+                    return Ok(validationResult);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside GetValidationByToken action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace Repository
         private IOwnerRepository _owner;
         private IUserRepository _user;
         private IValidationRepository _validation;
+        private IComponentRepository _component;
+        private ICategorieRepository _Categorie;
         private IAccountRepository _account;
 
         public IOwnerRepository Owner
@@ -50,6 +52,32 @@ namespace Repository
                 }
 
                 return _validation;
+            }
+        }
+
+        public IComponentRepository Component
+        {
+            get
+            {
+                if (_component == null)
+                {
+                    _component = new ComponentRepository(_repoContext);
+                }
+
+                return _component;
+            }
+        }
+
+        public ICategorieRepository Categorie
+        {
+            get
+            {
+                if (_Categorie == null)
+                {
+                    _Categorie = new CategorieRepository(_repoContext);
+                }
+
+                return _Categorie;
             }
         }
 
