@@ -12,9 +12,6 @@ namespace API
     {
         public MappingProfile()
         {
-            CreateMap<Owner, OwnerDto>();
-            CreateMap<OwnerForCreationDto, Owner>();
-
             CreateMap<User, UserDto>();
             CreateMap<UserForCreationDto, User>();
 
@@ -26,9 +23,6 @@ namespace API
 
             CreateMap<Categorie, CategorieDto>();
             CreateMap<CategorieForCreationDto, Categorie>();
-
-            CreateMap<Account, AccountDto>();
-
 
         }
     }
