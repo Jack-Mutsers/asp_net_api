@@ -10,7 +10,6 @@ using Repository;
 
 namespace API.Filters
 {
-
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class ApiKeyAuthAttribute : Attribute, IAsyncActionFilter
     {

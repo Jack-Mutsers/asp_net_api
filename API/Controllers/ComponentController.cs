@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Entities.Models;
+using API.Filters;
 
 namespace API.Controllers
 {
+
+    [ApiKeyAuth]
     [Route("api/component")]
     [ApiController]
     public class ComponentController : ControllerBase
@@ -31,12 +34,12 @@ namespace API.Controllers
         {
             try
             {
-                var users = _repository.Component.GetAllComponents();
+                var comp = _repository.Component.GetAllComponents();
 
                 _logger.LogInfo($"Returned all users from database.");
 
-                var usersResult = _mapper.Map<IEnumerable<UserDto>>(users);
-                return Ok(usersResult);
+                var componentResult = _mapper.Map<IEnumerable<ComponentDto>>(comp);
+                return Ok(componentResult);
             }
             catch (Exception ex)
             {
@@ -121,7 +124,7 @@ namespace API.Controllers
                 _repository.Component.CreateComponent(compEntity);
                 _repository.Save();
 
-                var createdComponent = _mapper.Map<UserDto>(compEntity);
+                var createdComponent = _mapper.Map<ComponentDto>(compEntity);
 
                 return CreatedAtRoute("ComponentById", new { id = createdComponent.id }, createdComponent);
             }

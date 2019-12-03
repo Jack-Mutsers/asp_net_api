@@ -14,7 +14,8 @@ namespace Entities.Models
 
         [Required(ErrorMessage = "component name is required")]
         [StringLength(100, ErrorMessage = "component name can't be longer than 500 characters")]
-        public string comp_name { get; set; }
+        [Column("comp_name")]
+        public string name { get; set; }
 
         [Required(ErrorMessage = "categorie id is required")]
         public int cat_id { get; set; }

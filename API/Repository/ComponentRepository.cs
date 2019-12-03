@@ -16,7 +16,7 @@ namespace Repository
         public IEnumerable<Component> GetAllComponents()
         {
             return FindAll()
-                .OrderBy(comp => comp.comp_name)
+                .OrderBy(comp => comp.name)
                 .ToList();
         }
         public Component GetComponentById(int id)

@@ -16,13 +16,13 @@ namespace Repository
         public IEnumerable<Categorie> GetAllCategories()
         {
             return FindAll()
-                .OrderBy(cat => cat.cat_name)
+                .OrderBy(cat => cat.name)
                 .ToList();
         }
 
         public Categorie GetCategorieById(int id)
         {
-            return FindByCondition(cat => cat.cat_id.Equals(id))
+            return FindByCondition(cat => cat.id.Equals(id))
                     .FirstOrDefault();
         }
 

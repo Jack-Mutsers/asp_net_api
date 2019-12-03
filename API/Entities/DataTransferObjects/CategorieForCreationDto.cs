@@ -7,6 +7,6 @@ namespace Entities.DataTransferObjects
 {
     public class CategorieForCreationDto
     {
-        public string cat_name { get; set; }
+        public string name { get; set; }
     }
 }

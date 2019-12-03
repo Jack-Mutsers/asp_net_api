@@ -6,9 +6,9 @@ namespace Entities.DataTransferObjects
 {
     public class ComponentDto
     {
-        public int comp_id { get; set; }
+        public int id { get; set; }
 
-        public string comp_name { get; set; }
+        public string name { get; set; }
 
         public int cat_id { get; set; }
 

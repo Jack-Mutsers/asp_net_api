@@ -8,9 +8,12 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Entities.Models;
+using API.Filters;
 
 namespace API.Controllers
 {
+
+    [ApiKeyAuth]
     [Route("api/categorie")]
     [ApiController]
     public class CategorieController : ControllerBase

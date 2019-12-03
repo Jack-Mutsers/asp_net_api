@@ -1,7 +1,4 @@
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\staticwebassets\API.StaticWebAssets.Manifest.cache
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\staticwebassets\API.StaticWebAssets.xml
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.AssemblyInfoInputs.cache
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.AssemblyInfo.cs
+D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\nlog.config
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\appsettings.Development.json
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\appsettings.json
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
@@ -53,6 +50,7 @@ D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\NLog.Extensions.Lo
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\NuGet.Frameworks.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\Pomelo.JsonObject.dll
+D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\RestSharp.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\System.Composition.AttributedModel.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\System.Composition.Convention.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\System.Composition.Hosting.dll
@@ -121,11 +119,12 @@ D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\runtimes\win-x86\n
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\staticwebassets\API.StaticWebAssets.Manifest.cache
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\staticwebassets\API.StaticWebAssets.xml
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.MvcApplicationPartsAssemblyInfo.cache
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.AssemblyInfoInputs.cache
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.AssemblyInfo.cs
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.RazorTargetAssemblyInfo.cache
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.csproj.CopyComplete
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.dll
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.pdb
-D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\nlog.config
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.csprojAssemblyReference.cache
-D:\programeren\grote_proftaat\API\API\bin\Debug\netcoreapp3.0\RestSharp.dll
-D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.MvcApplicationPartsAssemblyInfo.cache
