@@ -128,3 +128,4 @@ D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.RazorTargetAss
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.csproj.CopyComplete
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.dll
 D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.pdb
+D:\programeren\grote_proftaat\API\API\obj\Debug\netcoreapp3.0\API.csprojAssemblyReference.cache

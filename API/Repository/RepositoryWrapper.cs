@@ -9,11 +9,12 @@ namespace Repository
     public class RepositoryWrapper : IRepositoryWrapper
     {
         private RepositoryContext _repoContext;
-        private IUserRepository _user;
-        private IValidationRepository _validation;
+        //private IUserRepository _user;
+        //private IValidationRepository _validation;
         private IComponentRepository _component;
         private ICategorieRepository _Categorie;
 
+        /*
         public IUserRepository User
         {
             get
@@ -39,6 +40,7 @@ namespace Repository
                 return _validation;
             }
         }
+        */
 
         public IComponentRepository Component
         {

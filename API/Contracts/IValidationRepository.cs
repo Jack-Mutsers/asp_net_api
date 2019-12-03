@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿/*
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,3 +13,4 @@ namespace Contracts
         void CreateValidation(Validation val);
     }
 }
+*/

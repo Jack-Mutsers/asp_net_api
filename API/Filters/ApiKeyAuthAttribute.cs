@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using API.External;
 using AutoMapper;
 using Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +27,9 @@ namespace API.Filters
             try
             {
                 Guid ParsedData = Guid.Parse(potentialApiKey);
-                AccessValidation accessValidation = new AccessValidation(ParsedData);
+                CurlConnector connector = new CurlConnector(ParsedData);
 
-                var valid = accessValidation.GetValidation();
+                var valid = connector.GetValidation();
 
                 /*
                 var configuration = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
