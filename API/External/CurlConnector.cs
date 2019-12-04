@@ -66,6 +66,39 @@ namespace API.External
             return jsonResponse;
         }
 
+        public string UpdateUser(string password, Guid token)
+        {
+            var client = new RestClient("https://localhost:5001/api/user/" + token);
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Postman-Token", "d7e4bfbd-db67-4c70-b173-c2d6dd14bcf1");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "{\n \"password\": \""+ password +"\"\n}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            string responseContent = response.Content.Replace("\"", "'");
+
+            var jsonResponse = JsonConvert.DeserializeObject<string>(responseContent);
+
+            return jsonResponse;
+        }
+        
+        public string DeleteUser(Guid id)
+        {
+            var client = new RestClient("https://localhost:5001/api/user/"+ id);
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("Postman-Token", "310db248-3017-4111-9c53-018f20b5dcf9");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            IRestResponse response = client.Execute(request);
+
+            string responseContent = response.Content.Replace("\"", "'");
+
+            var jsonResponse = JsonConvert.DeserializeObject<string>(responseContent);
+
+            return jsonResponse;
+        }
+
         public Guid Login(User userEntity)
         {
             var client = new RestClient("https://localhost:5001/api/user/login");

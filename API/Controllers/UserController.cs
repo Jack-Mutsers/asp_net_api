@@ -90,5 +90,50 @@ namespace API.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
+
+        [HttpPut("{token}")]
+        public IActionResult UpdateUser(Guid token, [FromBody]UserForUpdateDto user)
+        {
+            try
+            {
+                if (user == null)
+                {
+                    _logger.LogError("Owner object sent from client is null.");
+                    return BadRequest("Owner object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid owner object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                var response = connector.UpdateUser(user.password, token); 
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside UpdateOwner action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteUser(Guid id)
+        {
+            try
+            {
+                var response = connector.DeleteUser(id);
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside DeleteUser action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
     }
 }
+
