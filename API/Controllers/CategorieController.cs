@@ -14,15 +14,15 @@ namespace API.Controllers
 {
 
     [ApiKeyAuth]
-    [Route("api/categorie")]
+    [Route("api/category")]
     [ApiController]
-    public class CategorieController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         private ILoggerManager _logger;
         private IRepositoryWrapper _repository;
         private IMapper _mapper;
 
-        public CategorieController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
+        public CategoryController(ILoggerManager logger, IRepositoryWrapper repository, IMapper mapper)
         {
             _logger = logger;
             _repository = repository;
@@ -34,12 +34,12 @@ namespace API.Controllers
         {
             try
             {
-                var cat = _repository.Categorie.GetAllCategories();
+                var cat = _repository.Category.GetAllCategories();
 
-                _logger.LogInfo($"Returned all categories from database.");
+                _logger.LogInfo($"Returned all Categories from database.");
 
-                var categorieResult = _mapper.Map<IEnumerable<CategorieDto>>(cat);
-                return Ok(categorieResult);
+                var CategoryResult = _mapper.Map<IEnumerable<CategoryDto>>(cat);
+                return Ok(CategoryResult);
             }
             catch (Exception ex)
             {
@@ -48,24 +48,24 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet("{id}", Name = "CategorieById")]
-        public IActionResult GetCategorieById(int id)
+        [HttpGet("{id}", Name = "CategoryById")]
+        public IActionResult GetCategoryById(int id)
         {
             try
             {
-                var cat = _repository.Categorie.GetCategorieById(id);
+                var cat = _repository.Category.GetCategoryById(id);
 
                 if (cat == null)
                 {
-                    _logger.LogError($"categorie with id: {id}, hasn't been found in db.");
+                    _logger.LogError($"Category with id: {id}, hasn't been found in db.");
                     return NotFound();
                 }
                 else
                 {
-                    _logger.LogInfo($"Returned categorie with id: {id}");
+                    _logger.LogInfo($"Returned Category with id: {id}");
 
-                    var categorieResult = _mapper.Map<CategorieDto>(cat);
-                    return Ok(categorieResult);
+                    var CategoryResult = _mapper.Map<CategoryDto>(cat);
+                    return Ok(CategoryResult);
                 }
             }
             catch (Exception ex)
@@ -76,34 +76,102 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategorie([FromBody]CategorieForCreationDto categorie)
+        public IActionResult CreateCategory([FromBody]CategoryForCreationDto category)
         {
             try
             {
-                if (categorie == null)
+                if (category == null)
                 {
-                    _logger.LogError("categorie object sent from client is null.");
-                    return BadRequest("categorie object is null");
+                    _logger.LogError("category object sent from client is null.");
+                    return BadRequest("category object is null");
                 }
 
                 if (!ModelState.IsValid)
                 {
-                    _logger.LogError("Invalid categorie object sent from client.");
+                    _logger.LogError("Invalid category object sent from client.");
                     return BadRequest("Invalid model object");
                 }
 
-                var categorieEntity = _mapper.Map<Categorie>(categorie);
+                var categoryEntity = _mapper.Map<Category>(category);
 
-                _repository.Categorie.CreateCategorie(categorieEntity);
+                _repository.Category.CreateCategory(categoryEntity);
                 _repository.Save();
 
-                var createdCategorie = _mapper.Map<CategorieDto>(categorieEntity);
+                var createdCategory = _mapper.Map<CategoryDto>(categoryEntity);
 
-                return CreatedAtRoute("CategorieById", new { id = createdCategorie.id }, createdCategorie);
+                return CreatedAtRoute("CategoryById", new { id = createdCategory.id }, createdCategory);
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong inside CreateCategorie action: {ex.Message}");
+                _logger.LogError($"Something went wrong inside CreateCategory action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateCategory(int id, [FromBody]CategoryForUpdateDto cat)
+        {
+            try
+            {
+                if (cat == null)
+                {
+                    _logger.LogError("Category object sent from client is null.");
+                    return BadRequest("Category object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid category object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                var CategoryEntity = _repository.Category.GetCategoryById(id);
+                if (CategoryEntity == null)
+                {
+                    _logger.LogError($"Category with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                _mapper.Map(cat, CategoryEntity);
+
+                _repository.Category.UpdateCategory(CategoryEntity);
+                _repository.Save();
+
+                return Ok("Category is updated");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside UpdateCategory action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteCategory(int id)
+        {
+            try
+            {
+                var cat = _repository.Category.GetCategoryById(id);
+                if (cat == null)
+                {
+                    _logger.LogError($"Category with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                if (_repository.Component.componentsByCategory(id).Any())
+                {
+                    _logger.LogError($"Cannot delete category with id: {id}. It has related components. Delete or alter them first");
+                    return BadRequest("Cannot delete category. It has related components. Delete or alter them first");
+                }
+
+                _repository.Category.DeleteCategory(cat);
+                _repository.Save();
+
+                return Ok("Category is delted");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside DeleteCategory action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }

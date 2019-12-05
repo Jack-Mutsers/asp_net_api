@@ -11,6 +11,6 @@ namespace Entities
         public DbSet<User> Users { get; set; }
         public DbSet<Validation> validations { get; set; }
         public DbSet<Component> components { get; set; }
-        public DbSet<Categorie> categories { get; set; }
+        public DbSet<Category> categories { get; set; }
     }
 }

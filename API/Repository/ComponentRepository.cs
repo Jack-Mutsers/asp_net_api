@@ -25,7 +25,7 @@ namespace Repository
                     .FirstOrDefault();
         }
 
-        public Component GetComponentsWithCategorie(int cat)
+        public Component GetComponentsWithCategory(int cat)
         {
             return FindByCondition(comp => comp.cat_id.Equals(cat))
                 .FirstOrDefault();
@@ -36,6 +36,19 @@ namespace Repository
             Create(comp);
         }
 
+        public void UpdateComponent(Component comp)
+        {
+            Update(comp);
+        }
 
+        public void DeleteComponent(Component comp)
+        {
+            Delete(comp);
+        }
+
+        public IEnumerable<Component> componentsByCategory(int catId)
+        {
+            return FindByCondition(a => a.cat_id.Equals(catId)).ToList();
+        }
     }
 }

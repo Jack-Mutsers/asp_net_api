@@ -5,8 +5,12 @@ using System.Text;
 
 namespace Entities.DataTransferObjects
 {
-    public class CategorieForCreationDto
+    public class ComponentForUpdateDto
     {
         public string name { get; set; }
+
+        public int cat_id { get; set; }
+
+        public bool alarm_status { get; set; }
     }
 }

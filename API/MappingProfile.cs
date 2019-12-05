@@ -20,9 +20,11 @@ namespace API
 
             CreateMap<Component, ComponentDto>();
             CreateMap<ComponentForCreationDto, Component>();
+            CreateMap<ComponentForUpdateDto, Component>();
 
-            CreateMap<Categorie, CategorieDto>();
-            CreateMap<CategorieForCreationDto, Categorie>();
+            CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryForCreationDto, Category>();
+            CreateMap<CategoryForUpdateDto, Category>();
 
         }
     }

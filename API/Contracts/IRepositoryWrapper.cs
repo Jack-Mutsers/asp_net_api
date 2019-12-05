@@ -9,7 +9,7 @@ namespace Contracts
         //IUserRepository User { get; }
         //IValidationRepository Validation { get; }
         IComponentRepository Component { get; }
-        ICategorieRepository Categorie { get; }
+        ICategoryRepository Category { get; }
         void Save();
     }
 }

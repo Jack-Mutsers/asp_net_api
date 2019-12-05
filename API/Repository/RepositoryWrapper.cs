@@ -12,7 +12,7 @@ namespace Repository
         //private IUserRepository _user;
         //private IValidationRepository _validation;
         private IComponentRepository _component;
-        private ICategorieRepository _Categorie;
+        private ICategoryRepository _Category;
 
         /*
         public IUserRepository User
@@ -55,16 +55,16 @@ namespace Repository
             }
         }
 
-        public ICategorieRepository Categorie
+        public ICategoryRepository Category
         {
             get
             {
-                if (_Categorie == null)
+                if (_Category == null)
                 {
-                    _Categorie = new CategorieRepository(_repoContext);
+                    _Category = new CategoryRepository(_repoContext);
                 }
 
-                return _Categorie;
+                return _Category;
             }
         }
 

@@ -80,7 +80,7 @@ namespace API.Controllers
         {
             try
             {
-                var comps = _repository.Component.GetComponentsWithCategorie(id);
+                var comps = _repository.Component.GetComponentsWithCategory(id);
 
                 if (comps == null)
                 {
@@ -131,6 +131,68 @@ namespace API.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Something went wrong inside CreateUser action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateComponent(int id, [FromBody]ComponentForUpdateDto comp)
+        {
+            try
+            {
+                if (comp == null)
+                {
+                    _logger.LogError("Component object sent from client is null.");
+                    return BadRequest("Component object is null");
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    _logger.LogError("Invalid component object sent from client.");
+                    return BadRequest("Invalid model object");
+                }
+
+                var compEntity = _repository.Component.GetComponentById(id);
+                if (compEntity == null)
+                {
+                    _logger.LogError($"Component with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                _mapper.Map(comp, compEntity);
+
+                _repository.Component.UpdateComponent(compEntity);
+                _repository.Save();
+
+                return Ok("Component is updated");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside UpdateComponent action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteComponent(int id)
+        {
+            try
+            {
+                var comp = _repository.Component.GetComponentById(id);
+                if (comp == null)
+                {
+                    _logger.LogError($"Component with id: {id}, hasn't been found in db.");
+                    return NotFound();
+                }
+
+                _repository.Component.DeleteComponent(comp);
+                _repository.Save();
+
+                return Ok("Component is deleted");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside DeleteComponent action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
         }
