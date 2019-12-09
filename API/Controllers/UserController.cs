@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Entities.Models;
 using API.External;
+using API.Filters;
 
 namespace API.Controllers
 {
@@ -91,7 +92,35 @@ namespace API.Controllers
             }
         }
 
+
+        [Route("logout")]
+        [ApiKeyAuth]
+        [HttpPost]
+        public IActionResult logout([FromBody]string item)
+        {
+            try
+            {
+                Guid token = Guid.Parse(item);
+                if (token.GetType() != typeof(Guid))
+                {
+                    _logger.LogError("User object sent from client is null.");
+                    return BadRequest("User object is null");
+                }
+
+                var result = connector.Logout(token);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside logout action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+
         [HttpPut("{token}")]
+        [ApiKeyAuth]
         public IActionResult UpdateUser(Guid token, [FromBody]UserForUpdateDto user)
         {
             try
@@ -120,6 +149,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ApiKeyAuth]
         public IActionResult DeleteUser(Guid id)
         {
             try

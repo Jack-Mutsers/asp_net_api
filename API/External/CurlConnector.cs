@@ -115,5 +115,22 @@ namespace API.External
 
             return jsonResponse;
         }
+
+        public string Logout(Guid token)
+        {
+            var client = new RestClient("https://localhost:5001/api/user/logout");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Postman-Token", "2ea45aaa-5c1d-4e84-b121-a8e71662b08d");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("undefined", "\"" + token + "\"", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            string responseContent = response.Content.Replace("\"", "'");
+
+            string jsonResponse = JsonConvert.DeserializeObject<string>(responseContent);
+
+            return jsonResponse;
+        }
     }
 }
