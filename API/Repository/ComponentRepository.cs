@@ -27,7 +27,7 @@ namespace Repository
 
         public Component GetComponentsWithCategory(int cat)
         {
-            return FindByCondition(comp => comp.cat_id.Equals(cat))
+            return FindByCondition(comp => comp.Categoryid.Equals(cat))
                 .FirstOrDefault();
         }
 
@@ -48,7 +48,7 @@ namespace Repository
 
         public IEnumerable<Component> componentsByCategory(int catId)
         {
-            return FindByCondition(a => a.cat_id.Equals(catId)).ToList();
+            return FindByCondition(a => a.Categoryid.Equals(catId)).ToList();
         }
     }
 }

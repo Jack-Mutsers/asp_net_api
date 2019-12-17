@@ -34,7 +34,7 @@ namespace API.Controllers
         {
             try
             {
-                var cat = _repository.Category.GetAllCategories();
+                var cat = _repository.Category.GetAllCategoriesWithComponents();
 
                 _logger.LogInfo($"Returned all Categories from database.");
 

@@ -10,5 +10,6 @@ namespace Entities.DataTransferObjects
 
         public string name { get; set; }
 
+        public IEnumerable<ComponentDto> Components { get; set; }
     }
 }

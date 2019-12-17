@@ -27,7 +27,7 @@ namespace API.External
 
         public bool GetValidation()
         {
-            var client = new RestClient("https://localhost:5001/api/validation");
+            var client = new RestClient("http://localhost:5000/api/validation");
             var request = new RestRequest(Method.POST);
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("Connection", "keep-alive");
@@ -51,7 +51,7 @@ namespace API.External
 
         public UserDto AddUser(User userEntity)
         {
-            var client = new RestClient("https://localhost:5001/api/user");
+            var client = new RestClient("http://localhost:5000/api/user");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Postman-Token", "efcb9d6f-2cab-42ba-82de-6cd5aa0159b5");
             request.AddHeader("cache-control", "no-cache");
@@ -68,7 +68,7 @@ namespace API.External
 
         public string UpdateUser(string password, Guid token)
         {
-            var client = new RestClient("https://localhost:5001/api/user/" + token);
+            var client = new RestClient("http://localhost:5000/api/user/" + token);
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Postman-Token", "d7e4bfbd-db67-4c70-b173-c2d6dd14bcf1");
             request.AddHeader("cache-control", "no-cache");
@@ -85,7 +85,7 @@ namespace API.External
         
         public string DeleteUser(Guid id)
         {
-            var client = new RestClient("https://localhost:5001/api/user/"+ id);
+            var client = new RestClient("http://localhost:5000/api/user/"+ id);
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("Postman-Token", "310db248-3017-4111-9c53-018f20b5dcf9");
             request.AddHeader("cache-control", "no-cache");
@@ -99,9 +99,9 @@ namespace API.External
             return jsonResponse;
         }
 
-        public Guid Login(User userEntity)
+        public ValidationDto Login(User userEntity)
         {
-            var client = new RestClient("https://localhost:5001/api/user/login");
+            var client = new RestClient("http://localhost:5000/api/user/login");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Postman-Token", "efcb9d6f-2cab-42ba-82de-6cd5aa0159b5");
             request.AddHeader("cache-control", "no-cache");
@@ -111,14 +111,14 @@ namespace API.External
 
             string responseContent = response.Content.Replace("\"", "'");
 
-            Guid jsonResponse = JsonConvert.DeserializeObject<Guid>(responseContent);
+            var jsonResponse = JsonConvert.DeserializeObject<ValidationDto>(responseContent);
 
             return jsonResponse;
         }
 
         public string Logout(Guid token)
         {
-            var client = new RestClient("https://localhost:5001/api/user/logout");
+            var client = new RestClient("http://localhost:5000/api/user/logout");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Postman-Token", "2ea45aaa-5c1d-4e84-b121-a8e71662b08d");
             request.AddHeader("cache-control", "no-cache");

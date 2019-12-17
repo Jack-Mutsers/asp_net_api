@@ -12,8 +12,8 @@ namespace Entities.Models
         [Key]
         public Guid access_token { get; set; }
 
-        [Required(ErrorMessage = "user_id is required")]
-        public Guid user_id { get; set; }
+        [Required(ErrorMessage = "user id is required")]
+        public Guid userId { get; set; }
 
         public DateTime Creation_date { get; set; }
 

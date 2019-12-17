@@ -30,6 +30,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+        [ApiKeyAuth]
         [HttpPost]
         public IActionResult CreateUser([FromBody]UserForCreationDto user)
         {
@@ -119,9 +120,9 @@ namespace API.Controllers
         }
 
 
-        [HttpPut("{token}")]
+        [HttpPut]
         [ApiKeyAuth]
-        public IActionResult UpdateUser(Guid token, [FromBody]UserForUpdateDto user)
+        public IActionResult UpdateUser([FromBody]UserForUpdateDto user)
         {
             try
             {
@@ -137,7 +138,7 @@ namespace API.Controllers
                     return BadRequest("Invalid model object");
                 }
 
-                var response = connector.UpdateUser(user.password, token); 
+                var response = connector.UpdateUser(user.password, user.id); 
 
                 return Ok(response);
             }

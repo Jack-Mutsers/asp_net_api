@@ -15,5 +15,6 @@ namespace Entities.Models
         [Required(ErrorMessage = "categorie name is required")]
         [Column("cat_name")]
         public string name { get; set; }
+        public ICollection<Component> Components { get; set; }
     }
 }

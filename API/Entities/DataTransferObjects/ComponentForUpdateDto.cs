@@ -9,8 +9,8 @@ namespace Entities.DataTransferObjects
     {
         public string name { get; set; }
 
-        public int cat_id { get; set; }
+        public int Categoryid { get; set; }
 
-        public bool alarm_status { get; set; }
+        public bool status { get; set; }
     }
 }

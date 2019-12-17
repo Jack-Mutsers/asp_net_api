@@ -20,6 +20,14 @@ namespace Repository
                 .ToList();
         }
 
+        public IEnumerable<Category> GetAllCategoriesWithComponents()
+        {
+            return FindAll()
+                .OrderBy(cat => cat.name)
+                .Include(comp => comp.Components)
+                .ToList();
+        }
+
         public Category GetCategoryById(int id)
         {
             return FindByCondition(cat => cat.id.Equals(id))
