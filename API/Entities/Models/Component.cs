@@ -22,6 +22,12 @@ namespace Entities.Models
         [Column("cat_id")]
         public int Categoryid { get; set; }
 
+        public int value { get; set; }
+
+        public string ip_adress { get; set; }
+
+        public int arduino_id { get; set; }
+
         [Column("alarm_status")]
         public bool status { get; set; }
     }
