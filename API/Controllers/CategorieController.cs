@@ -108,8 +108,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateCategory(int id, [FromBody]CategoryForUpdateDto cat)
+        [HttpPut]
+        public IActionResult UpdateCategory([FromBody]CategoryForUpdateDto cat)
         {
             try
             {
@@ -125,10 +125,10 @@ namespace API.Controllers
                     return BadRequest("Invalid model object");
                 }
 
-                var CategoryEntity = _repository.Category.GetCategoryById(id);
+                var CategoryEntity = _repository.Category.GetCategoryById(cat.id);
                 if (CategoryEntity == null)
                 {
-                    _logger.LogError($"Category with id: {id}, hasn't been found in db.");
+                    _logger.LogError($"Category with id: {cat.id}, hasn't been found in db.");
                     return NotFound();
                 }
 

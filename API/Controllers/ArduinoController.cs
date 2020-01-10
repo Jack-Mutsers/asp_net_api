@@ -14,7 +14,7 @@ namespace API.Controllers
 {
 
     [ApiKeyAuth]
-    [Route("api/category")]
+    [Route("api/arduino")]
     [ApiController]
     public class ArduinoController : ControllerBase
     {
@@ -27,6 +27,16 @@ namespace API.Controllers
             _logger = logger;
             _repository = repository;
             _mapper = mapper;
+        }
+
+
+        [HttpPost]
+        public void PerformAction([FromBody]ComponentDto component)
+        {
+            var comp = _repository.Component.GetComponentById(component.id);
+
+            var testc = 1;
+
         }
 
         /*/

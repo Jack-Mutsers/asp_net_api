@@ -116,6 +116,29 @@ namespace API.External
             return jsonResponse;
         }
 
+        public bool extendTimer(Guid id)
+        {
+            var client = new RestClient("http://localhost:5000/api/validation/extend");
+            var request = new RestRequest(Method.PUT);
+            request.AddHeader("Postman-Token", "efcb9d6f-2cab-42ba-82de-6cd5aa0159b5");
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("Content-Type", "application/json");
+
+            List<string> ParamArr = new List<string>();
+            ParamArr.Add("\r\n \"access_token\": \"" + id.ToString() + "\"");
+
+            string param = "{" + String.Join(",", ParamArr) + "\r\n}";
+            request.AddParameter("undefined", param, ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+
+            if (response.IsSuccessful)
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
         public string Logout(Guid token)
         {
             var client = new RestClient("http://localhost:5000/api/user/logout");

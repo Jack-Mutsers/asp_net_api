@@ -7,6 +7,8 @@ namespace Entities.DataTransferObjects
 {
     public class ComponentForUpdateDto
     {
+        public int id { get; set; }
+
         public string name { get; set; }
 
         public int Categoryid { get; set; }

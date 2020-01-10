@@ -135,8 +135,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateComponent(int id, [FromBody]ComponentForUpdateDto comp)
+        [HttpPut]
+        public IActionResult UpdateComponent([FromBody]ComponentForUpdateDto comp)
         {
             try
             {
@@ -152,10 +152,10 @@ namespace API.Controllers
                     return BadRequest("Invalid model object");
                 }
 
-                var compEntity = _repository.Component.GetComponentById(id);
+                var compEntity = _repository.Component.GetComponentById(comp.id);
                 if (compEntity == null)
                 {
-                    _logger.LogError($"Component with id: {id}, hasn't been found in db.");
+                    _logger.LogError($"Component with id: {comp.id}, hasn't been found in db.");
                     return NotFound();
                 }
 

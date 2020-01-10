@@ -93,6 +93,31 @@ namespace API.Controllers
             }
         }
 
+        
+        [Route("extend")]
+        [HttpPut]
+        public IActionResult extend([FromBody]ValidationDto validation)
+        {
+            try
+            {
+                if (validation == null)
+                {
+                    _logger.LogError("id object sent from client is null.");
+                    return BadRequest("id object is null");
+                }
+
+                var result = connector.extendTimer(validation.access_token);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Something went wrong inside CreateUser action: {ex.Message}");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+
 
         [Route("logout")]
         [ApiKeyAuth]
