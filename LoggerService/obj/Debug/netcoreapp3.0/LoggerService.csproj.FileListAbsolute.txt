@@ -1,0 +1,13 @@
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.deps.json
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.dll
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\LoggerService.pdb
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\Contracts.dll
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\Entities.dll
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\Contracts.pdb
+D:\programeren\grote_proftaat\API\LoggerService\bin\Debug\netcoreapp3.0\Entities.pdb
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.csprojAssemblyReference.cache
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.AssemblyInfoInputs.cache
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.AssemblyInfo.cs
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.csproj.CopyComplete
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.dll
+D:\programeren\grote_proftaat\API\LoggerService\obj\Debug\netcoreapp3.0\LoggerService.pdb
