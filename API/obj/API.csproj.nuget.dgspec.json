@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj": {}
+    "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj": {
+    "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\jmuts\\.nuget\\packages\\",
-        "outputPath": "D:\\programeren\\grote_proftaat\\API\\API\\obj\\",
+        "projectPath": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\calin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\jmuts\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\calin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,6 +78,10 @@
             "RestSharp": {
               "target": "Package",
               "version": "[106.6.10, )"
+            },
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             }
           },
           "imports": [
