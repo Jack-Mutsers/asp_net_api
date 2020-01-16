@@ -1,81 +1,85 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace API.External
 {
     public class ArduinoConnector
     {
-        //Private fields for use in conjuction with constructors and properties.
-        private int _baudRate;
-        private string _portName;
-        private SerialPort port;
-
-
-        //Constructors for Object instantiation.
-        public ArduinoConnector()
+        const int PORT_NO = 8088;
+        const string SERVER_IP = "192.168.43.210";
+        public bool Send_Data(Component comp, Category cat)
         {
+            string ip_Adress = "192.168.43.210";//comp.ip_adress;
 
-        }
+            //---data to send to the server---
+            string textToSend = "";
 
-
-        public ArduinoConnector(int baud, string portName)
-        {
-            this._portName = portName;
-            this._baudRate = baud;
-        }
-
-
-        //Public properties for limiting interaction with private fields.
-        public int BaudRate
-        {
-            get => _baudRate;
-            set => _baudRate = value;
-        }
-
-        public string PortName
-        {
-            get => _portName;
-            set => _portName = value;
-        }
-
-        //Method for opening a Serial connection with a COM-Port.
-        public bool OpenConnection()
-        {
-            try
+            if (cat.name == "Lamp")
             {
-                port = new SerialPort { BaudRate = this._baudRate, PortName = this._portName };
-                port.Open();
-                return true;
-
+                switch (comp.value)
+                {
+                    case 1:
+                        textToSend = "LED-OFF";
+                        break;
+                    case 0:
+                        textToSend = "LED-ON";
+                        break;
+                }
             }
-            catch (Exception e)
+            else if (cat.name == "Deur")
             {
-                e = new Exception("Can't open the serial connection to Master.\n");
-                return false;
+                switch (comp.value)
+                {
+                    case 1:
+                        textToSend = "DOOR-CLOSE";
+                        break;
+                    case 0:
+                        textToSend = "DOOR-OPEN";
+                        break;
+                }
             }
-
-
-        }
-
-        //Simple method for writing a string to a Node.
-        
-        public bool Write(string instruction)
-        {
-            try
+            else if (cat.name == "Lock")
             {
-                port.Write(instruction);
-                System.Threading.Thread.Sleep(500);
-                return true;
-
+                switch (comp.value)
+                {
+                    case 1:
+                        textToSend = "LOCK-CLOSE";
+                        break;
+                    case 0:
+                        textToSend = "LOCK-OPEN";
+                        break;
+                }
             }
-            catch (Exception e)
+            else
             {
-                e = new Exception("Can't read serial connection.\n");
-                return false;
+                switch (comp.value)
+                {
+                    case 1:
+                        textToSend = "WINDOW-CLOSE";
+                        break;
+                    case 0:
+                        textToSend = "WINDOW-OPEN";
+                        break;
+                }
             }
+
+            //---create a TCPClient object at the IP and port no.---
+            TcpClient client = new TcpClient(ip_Adress, PORT_NO);
+            NetworkStream nwStream = client.GetStream();
+            byte[] bytesToSend = ASCIIEncoding.ASCII.GetBytes(textToSend);
+
+            //---send the text---
+            Console.WriteLine("Sending : " + textToSend);
+            nwStream.Write(bytesToSend, 0, bytesToSend.Length);
+
+            client.Close();
+            return true;
         }
     }
 }
