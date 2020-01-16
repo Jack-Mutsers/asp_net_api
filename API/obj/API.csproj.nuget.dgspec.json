@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj": {}
+    "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj": {
+    "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj",
+        "projectUniqueName": "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\calin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\calin\\source\\repos\\asp_net_api\\API\\obj\\",
+        "projectPath": "D:\\programeren\\grote_proftaat\\API\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\jmuts\\.nuget\\packages\\",
+        "outputPath": "D:\\programeren\\grote_proftaat\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\calin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jmuts\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -94,6 +94,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -102,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

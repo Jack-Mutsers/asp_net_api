@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Entities.Models;
 using API.Filters;
+using API.External;
 
 namespace API.Controllers
 {
@@ -29,17 +30,31 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-
+        //*
         [HttpPost]
-        public void PerformAction([FromBody]ComponentDto component)
+        public IActionResult PerformAction([FromBody]ComponentDto component)
         {
             var comp = _repository.Component.GetComponentById(component.id);
+            var cat = _repository.Category.GetCategoryById(comp.Categoryid);
 
-            var testc = 1;
+            ArduinoConnector connection = new ArduinoConnector();
 
+            bool succes = false;
+            succes = connection.Send_Data(comp, cat);
+
+            if (succes)
+            {
+                comp.value = comp.value == 0?1:0;
+                _repository.Component.UpdateComponent(comp);
+                _repository.Save();
+
+                return Ok("action succesfull");
+            }
+
+            return StatusCode(500, "Internal server error");
         }
 
-        /*/
+        /*
         [HttpGet]
         public IActionResult GetAllCategories()
         {
